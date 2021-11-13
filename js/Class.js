@@ -47,7 +47,7 @@ export default class Class {
     repr() {
         var out = `
 <div id="${this.internalName}">
-	<h2><i class="fas fa-edit" onclick="editTextContent(this)"> ${this.displayName}</i></h2>`;
+	<h2><i class="icon icon-edit class" onclick="editTextContent(this)"> ${this.displayName}</i></h2>`;
 
         this.categories.forEach(category => out += category.repr() + "\n");
 
