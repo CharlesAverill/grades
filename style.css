@@ -11,6 +11,11 @@ form {
 	display: table;
 }
 
+.fa {
+  text-decoration: none;
+  color: black;
+}
+
 .center {
 	margin: auto;
 	padding: 1em;
