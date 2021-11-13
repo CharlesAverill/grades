@@ -120,7 +120,7 @@ export default class Category {
     repr() {
         var out = `
 <div id="${this.internalName}" class="indent_element">
-    <h3><i class="icon icon-edit category" onclick="editTextContent(this)"> ${this.displayName}</i></h3>
+    <h3><i class="icon icon-pencil category" onclick="editTextContent(this)"> ${this.displayName}</i></h3>
     <label for="${this.internalName}_weight">Category Weight:</label>
     <input type="number" step="0.1" name="${this.internalName}_weight" value="${this.weight}">
     <table>
