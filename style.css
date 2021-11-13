@@ -1,0 +1,26 @@
+body {
+	padding: 3em;
+	padding-top: 0;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+form {
+	display: table;
+}
+
+.center {
+	margin: auto;
+	padding: 1em;
+	text-align: center;
+}
+
+.indent_element {
+	margin-left: 1em;
+}
+
+.inline_block {
+	display: inline-block;
+}

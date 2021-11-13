@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<script src="js/main.js" type="module"></script>
+	</head>
+
+	<body>
+		<div id="Header" class="center">
+			<h1>Charles's Final Grade Calculator</h1>
+		</div>
+
+		<form id="fileIO">
+			<p>
+				<input type="button" value="Save to JSON" onclick="saveToJSON()"><a id="downloadAsJSON"></a></input>
+			</p>
+			<p>
+				<label for="loadFromJSONButton">Load from JSON</label>
+				<input type="file" name="loadFromJSONButton" accept=".json" onchange="loadFromJSON(event)"></input>
+			</p>
+		</div>
+		<div id="classContainer">
+		</div>
+	</body>
+</html>
