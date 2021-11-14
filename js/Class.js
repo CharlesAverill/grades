@@ -71,7 +71,7 @@ export default class Class {
     <details open>
     	<summary>
             <i class="icon icon-pencil class" onclick="editTextContent(this)"> ${this.displayName}</i>
-                - <span  id="${this.internalName}_average">${this.average}</span>
+                - <strong  id="${this.internalName}_average">${this.average}</strong>
         </summary>
 
         <br>
