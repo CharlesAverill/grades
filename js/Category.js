@@ -28,6 +28,16 @@ export default class Category {
         }
     }
 
+    findAssignment(assignmentID){
+        for(var i = 0; i < this.assignments.length; i++){
+            if(this.assignments[i].id == assignmentID){
+                return this.assignments[i];
+            }
+        }
+
+        return null;
+    }
+
     addAssignment(assignment, draw=true) {
         var appendElement;
 
@@ -49,23 +59,15 @@ export default class Category {
         this.assignments.push(assignment);
     }
 
-    findAssignment(assignmentID){
-        for(var i = 0; i < this.assignments.length; i++){
-            if(this.assignments[i].id == assignmentID){
-                return this.assignments[i];
-            }
-        }
-
-        return null;
-    }
-
     removeLastAssignment() {
-        if(this.assignments.length > 1){
-            var lastAssignment = this.assignments.pop();
-            var removeElement = document.getElementById(lastAssignment.id);
-
-            removeElement.parentNode.removeChild(removeElement);
+        if(this.assignments.length <= 1){
+            return;
         }
+        
+        var lastAssignment = this.assignments.pop();
+        var removeElement = document.getElementById(lastAssignment.id);
+
+        removeElement.parentNode.removeChild(removeElement);
 
         this._average = 0.0;
         document.getElementById(this.internalName + "_average").innerHTML = this.average;

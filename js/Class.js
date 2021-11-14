@@ -11,17 +11,38 @@ export default class Class {
         this.displayName = name.replace(" ", "_");
         this.internalName = "class" + index;
         if(categories == null){
-            this.addCategory(new Category("Exams", null, 0.6, this.internalName));
-            this.addCategory(new Category("Homework", null, 0.3, this.internalName));
-            this.addCategory(new Category("Participation", null, 0.1, this.internalName));
+            this.addCategoryWithoutDraw(new Category("Exams", null, 0.6, this.internalName));
+            this.addCategoryWithoutDraw(new Category("Homework", null, 0.3, this.internalName));
+            this.addCategoryWithoutDraw(new Category("Participation", null, 0.1, this.internalName));
         } else {
             this.categories = categories;
         }
     }
 
-    addCategory(category){
+    addCategoryWithoutDraw(category){
         category.setIndex(this.categoryIndex++);
         this.categories.push(category);
+    }
+
+    addCategory(){
+        var newCat = new Category("Category " + (this.categoryIndex++ + 1), null, 0.0, this.internalName);
+        newCat.setIndex(this.categoryIndex);
+
+        var lastCategory = this.categories[this.categories.length - 1];
+        var appendElement = document.getElementById(lastCategory.internalName);
+
+        this.categories.push(newCat);
+
+        appendElement.insertAdjacentHTML("afterend", newCat.repr());
+    }
+
+    removeLastCategory(){
+        if(this.categories.length <= 1){
+            return;
+        }
+
+        var toRemove = document.getElementById(this.categories.pop().internalName);
+        toRemove.parentNode.removeChild(toRemove);
     }
 
     findCategory(categoryTag){

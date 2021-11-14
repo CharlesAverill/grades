@@ -21,10 +21,6 @@ function findClassAndCategory(elementID) {
 	var catName = split[1];
 
 	var foundClass = findClass(className);
-	if(foundClass == null){
-		alert("Couldn't find class with internal name " + className);
-		return;
-	}
 
 	return [foundClass, foundClass.findCategory(catName)];
 }
@@ -62,11 +58,13 @@ function updateAssignment(element, newVal, mode){
 }
 
 function addCategory(classID){
-
+	var found = findClass(classID);
+	found.addCategory();
 }
 
 function removeCategory(classID){
-
+	var found = findClass(classID);
+	found.removeLastCategory();
 }
 
 function addClass(){
@@ -80,7 +78,7 @@ function removeClass(){
 		return;
 	}
 
-	var toRemove = document.getElementById(classes[classes.length - 1].internalName);
+	var toRemove = document.getElementById(classes.pop().internalName);
 	toRemove.parentNode.removeChild(toRemove);
 }
 
