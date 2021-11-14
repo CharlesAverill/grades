@@ -8,7 +8,7 @@
 
 	<body>
 		<script src="js/main.js" type="module"></script>
-		
+
 		<div id="Header" class="center">
 			<a href="../" class="icon">
 				<i class="icon icon-home" style="font-size:36px;"></i>
@@ -20,6 +20,9 @@
 			<h1 class="inline_block" style="margin-left: 0.5em;">Charles's Final Grade Calculator</h1>
 		</div>
 
+		<hr>
+		<hr>
+
 		<form id="fileIO">
 			<p>
 				<input type="button" value="Save to JSON" onclick="saveToJSON()"><a id="downloadAsJSON"></a></input>
@@ -28,7 +31,19 @@
 				<label for="loadFromJSONButton">Load from JSON</label>
 				<input type="file" name="loadFromJSONButton" accept=".json" onchange="loadFromJSON(event)"></input>
 			</p>
-		</div>
+		</form>
+
+		<hr>
+		<hr>
+
+		<form id="classAddRemove">
+			<p>
+				<input type="button" value="Add Class" onclick="addClass()"></input><input type="button" value="Remove Class" onclick="removeClass()"></input>
+			</p>
+		</form>
+
+		<hr>
+		<hr>
 
 		<div id="classContainer">
 		</div>

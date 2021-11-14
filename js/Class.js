@@ -8,7 +8,7 @@ export default class Class {
     categoryIndex = 0;
 
     constructor(name, index, categories=null) {
-        this.displayName = name;
+        this.displayName = name.replace(" ", "_");
         this.internalName = "class" + index;
         if(categories == null){
             this.addCategory(new Category("Exams", null, 0.6, this.internalName));
@@ -47,13 +47,29 @@ export default class Class {
     repr() {
         var out = `
 <div id="${this.internalName}">
-	<h2><i class="icon icon-pencil class" onclick="editTextContent(this)"> ${this.displayName}</i></h2>`;
+    <details open>
+    	<summary>
+            <i class="icon icon-pencil class" onclick="editTextContent(this)"> ${this.displayName}</i>
+                - <span  id="${this.internalName}_average">${this.average}</span>
+        </summary>
+
+        <br>
+
+        <form id="${this.internalName}_categoryUpdate">
+            <p>
+                <input type="button" value="Add Category" onclick="addCategory('${this.internalName}')"></input>
+                <input type="button" value="Remove Category" onclick="removeCategory('${this.internalName}')"></input>
+            </p>
+        </form>`;
 
         this.categories.forEach(category => out += category.repr() + "\n");
 
         out += `\n
-    <h2>Class Average: <span id="${this.internalName}_average">${this.average}</span></h2>
-</div>\n`
+    </details>
+
+    <hr>
+
+<div>\n`
 
         return out;
     }

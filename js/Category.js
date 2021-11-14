@@ -121,8 +121,10 @@ export default class Category {
         var out = `
 <div id="${this.internalName}" class="indent_element">
     <h3><i class="icon icon-pencil category" onclick="editTextContent(this)"> ${this.displayName}</i></h3>
+
     <label for="${this.internalName}_weight">Category Weight:</label>
-    <input type="number" step="0.1" name="${this.internalName}_weight" value="${this.weight}">
+    <input type="number" step="0.1" name="${this.internalName}_weight" value="${this.weight}" onkeyup="updateCatWeight('${this.internalName}')">
+
     <table>
         <input type="button" value="Add row" onclick="addAssignment(${this.internalName})">
         <input type="button" value="Remove row" class="inline_block" onclick="removeAssignment(${this.internalName})">

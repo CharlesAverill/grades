@@ -37,6 +37,11 @@ function editTextContent(element){
 	}
 }
 
+function updateCatWeight(category){
+	var found = findClassAndCategory(category);
+
+}
+
 function addAssignment(element){
 	var foundCat = findClassAndCategory(element.id)[1];
 	foundCat.addAssignment(new Assignment());
@@ -56,10 +61,32 @@ function updateAssignment(element, newVal, mode){
 	foundClassCat[0].updateAverage();
 }
 
+function addCategory(classID){
+
+}
+
+function removeCategory(classID){
+
+}
+
+function addClass(){
+	var newClass = new Class("Class " + (classIndex++ + 1), classIndex);
+	classes.push(newClass);
+	classContainer.insertAdjacentHTML("beforeend", newClass.repr());
+}
+
+function removeClass(){
+	if(classes.length <= 1){
+		return;
+	}
+
+	var toRemove = document.getElementById(classes[classes.length - 1].internalName);
+	toRemove.parentNode.removeChild(toRemove);
+}
+
 function initBlank(){
-	var class1 = new Class("Class1", classIndex++);
-	classes.push(class1);
-	classContainer.insertAdjacentHTML("beforeend", class1.repr());
+	addClass();
+	addClass();
 }
 
 function saveToJSON(){
@@ -95,9 +122,18 @@ async function loadFromJSON(event) {
 }
 
 window.editTextContent = editTextContent;
+window.updateCatWeight = updateCatWeight;
+
 window.addAssignment = addAssignment;
 window.removeAssignment = removeAssignment;
 window.updateAssignment = updateAssignment;
+
+window.addCategory = addCategory;
+window.removeCategory = removeCategory;
+
+window.addClass = addClass;
+window.removeClass = removeClass;
+
 window.saveToJSON = saveToJSON;
 window.loadFromJSON = loadFromJSON;
 
